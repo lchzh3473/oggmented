@@ -29,13 +29,15 @@ Module['decodeOggData'] = (buffer, callback) => {
       const pp_pcm_view = new Uint32Array(HEAPU32.buffer, pp_pcm, channels);
       for (let channel = 0; channel < channels; channel++) {
         const p_pcm = pp_pcm_view[channel];
+        // fix error 'Uncaught RangeError: offset is out of bounds'
+        if (index + samplesRead > length) samplesRead = length - index;
         const p_pcm_view = new Float32Array(HEAPF32.buffer, p_pcm, samplesRead);
-        //copyToChannel is preferable to/faster than getChannelData.set but doesn't work in safari
+        // copyToChannel is preferable to/faster than getChannelData.set but doesn't work in safari
         audioBuffer.getChannelData(channel).set(p_pcm_view, index);
       }
       index += samplesRead;
       if (time + 8 < Date.now()) {
-        window.setImmediate(block);
+        setImmediate(block);
         break;
       }
     }

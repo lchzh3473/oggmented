@@ -3,3 +3,7 @@ build
 local
 emsdk
 .DS_Store
+yarn.lock
+package-lock.json
+.vscode
+*.log

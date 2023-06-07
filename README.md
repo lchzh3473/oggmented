@@ -1,6 +1,6 @@
 # oggmented
 
-oggmented `extends` AudioContext and overrides `decodeAudioData` to use an Emscripten transpiling of libogg-1.3.4 and libvorbis-1.3.6 when it encounters ogg vorbis data.
+oggmented `extends` AudioContext and overrides `decodeAudioData` to use an Emscripten transpiling of libogg-1.3.5 and libvorbis-1.3.7 when it encounters ogg vorbis data.
 
 This allows you to [`decodeAudioData`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/decodeAudioData) ogg vorbis buffers correctly in any browser.  This is especially useful in Safari and iOS browsers, which don't `decodeAudioData(oggVorbisBuffer)` [at all](https://caniuse.com/#search=vorbis).
 

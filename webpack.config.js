@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'production',
   entry: './src/js/oggmented.js',
   module: {
     rules: [{
@@ -26,8 +27,8 @@ module.exports = {
     filename: 'oggmented-bundle.js',
     library: 'oggmented',
     libraryTarget: 'umd'
-  },
-  watch: true
+  }
+  // watch: true
   // devServer: {
   //   contentBase: './dist'
   // }

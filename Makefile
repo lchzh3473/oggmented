@@ -1,6 +1,7 @@
+SHELL:=/bin/bash
 
-OGG_FILE="https://downloads.xiph.org/releases/ogg/libogg-1.3.4.tar.xz"
-VORBIS_FILE="https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.6.tar.xz"
+OGG_FILE="https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-1.3.5.tar.xz"
+VORBIS_FILE="https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-1.3.7.tar.xz"
 PREFIX=`cd ../.. && pwd`/local
 CFLAGS=-O3 --closure 1
 
@@ -33,6 +34,8 @@ src/js/decode.js: src/em/decode.c Makefile src/em/pre.js local/lib
 
 emsdk:
 	git clone https://github.com/emscripten-core/emsdk.git
+
+emsdk/upstream/emscripten: emsdk
 	cd emsdk \
 		&& git pull \
 		&& ./emsdk install 1.39.10 \
@@ -41,7 +44,8 @@ emsdk:
 build:
 	mkdir build
 
-local/lib: emsdk build
+local/lib: emsdk/upstream/emscripten build
+	source emsdk/emsdk_env.sh
 	curl -L ${OGG_FILE} | tar xJC build
 	cd build/libogg* \
 		&& ../../emsdk/upstream/emscripten/emconfigure ./configure --disable-shared --prefix=${PREFIX} \
