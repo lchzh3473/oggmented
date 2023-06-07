@@ -11,32 +11,18 @@
     "start": "nodemon & webpack --watch & karma start"
   },
   "nodemonConfig": {
-    "watch": [
-      "src/em/",
-      "Makefile"
-    ],
+    "watch": ["src/em/", "Makefile"],
     "exec": "CFLAGS='-O1' make"
   },
   "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
+    "presets": ["@babel/preset-env"]
   },
   "browserslist": "> 0.25%, not dead",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jfrancos/oggmented.git"
   },
-  "keywords": [
-    "ogg",
-    "decode",
-    "vorbis",
-    "safari",
-    "decodeaudio",
-    "emscripten",
-    "webassembly",
-    "wasm"
-  ],
+  "keywords": ["ogg", "decode", "vorbis", "safari", "decodeaudio", "emscripten", "webassembly", "wasm"],
   "author": "Justin Francos",
   "license": "MIT",
   "bugs": {

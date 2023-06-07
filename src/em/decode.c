@@ -10,7 +10,8 @@ int open_buffer(void *inbuf, int size)
   return ov_open(stream, &vf, NULL, 0);
 }
 
-int close_buffer() {
+int close_buffer()
+{
   return ov_clear(&vf);
 }
 
